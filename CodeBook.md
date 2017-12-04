@@ -126,7 +126,7 @@ The variables presented are a limited sample of the original dataset, representi
 *Reads in column names and activity codes (same for training and test datasets)
 *Reads in training and test datasets and applies column names
 *Adds subject ID and substitutes text description of activity for coded numerical variable
-*Selects only the variable columns of interest (Mean&StandardDeviation)
+*Selects only the variables of interest (Mean&StandardDeviation)
 *Merges training and test datasets into one data frame
 *Makes variable names more readable by eliminating abbreviations
 *Creates summary data.frame consisting of Mean of each variable, grouped by subject and activity

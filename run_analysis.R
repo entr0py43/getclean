@@ -33,7 +33,7 @@ train_act_id<-read.table(file = "./UCI HAR Dataset/train/y_train.txt", header = 
 train_sub_id<-read.table(file = "./UCI HAR Dataset/train/subject_train.txt", header = FALSE, col.names = "subject")
 ids<-cbind(train_sub_id, train_act_id)
 
-#subbing in more descriptive names for activities
+#subbing in/"decoding" names for activity values
 ids$activity<-factor(ids$activity, levels = activity_key[,1], labels = activity_key[,2])
 
 #adding subject and activity columns on left 
@@ -62,6 +62,22 @@ sel_test<-test_data[,j]
 data<-rbind(sel_train, sel_test)
 data$subject<-as.factor(data$subject)
 #10299 obs of 81vars
+
+#Cleaning column names and making more human-readable
+colnames(data) <- gsub("[\\(\\)-]", "", colnames(data))  #removes special characters except commas
+colnames(data) <- gsub("BodyBody", "Body", colnames(data)) #removes duplication typo
+
+colnames(data) <- gsub("mean", "Mean", colnames(data))
+colnames(data) <- gsub("std", "StandardDeviation", colnames(data))
+
+colnames(data) <- gsub("Acc", "Accelerometer", colnames(data))
+colnames(data) <- gsub("Gyro", "Gyroscope", colnames(data))
+colnames(data) <- gsub("Mag", "Magnitude", colnames(data))
+colnames(data) <- gsub("Freq", "Frequency", colnames(data))
+
+colnames(data) <- gsub("^f", "FrequencyDomain", colnames(data))
+colnames(data) <- gsub("^t", "TimeDomain",colnames(data))
+#important the freq replacement comes before the ^f search
 
 
 #creating summary by subject and activity
