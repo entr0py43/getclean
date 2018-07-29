@@ -6,7 +6,7 @@ output: html_document
 
 # README.md
 
-##Assignment <a name="assignment"></a>
+## Assignment <a name="assignment"></a>
 These files are the final submission for peer review for the Coursera course "Getting and Cleaning Data."  The goal was to obtain and clean the dataset provided below, and return a summary file provided in this repository named 'tidy_summary.txt' 
 
 
